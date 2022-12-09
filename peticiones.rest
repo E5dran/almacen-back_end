@@ -1,2 +1,38 @@
 ###
 GET http://localhost:3000/api/user
+
+###
+GET http://localhost:3000/api/orders
+
+###
+POST http://localhost:3000/api/orders
+Content-Type: application/json
+
+{
+    "addressee": "Mero",
+    "description":"C/ Yordi 18",
+    "n_items": 5,
+    "destination_address": "26",
+    "departure_date": "1996-09-18",
+    "arrival_date": "1996-09-18",
+    "truck_plate":"00000011Y",
+    "category": "s"
+}
+
+###
+PUT http://localhost:3000/api/orders/2
+Content-Type: application/json
+
+{
+    "addressee": "Juanan",
+    "description":"C/ Yordi 18",
+    "n_items": 5,
+    "destination_address": "26",
+    "departure_date": "1996-09-18",
+    "arrival_date": "1996-09-18",
+    "truck_plate":"00000011Y",
+    "category": "s"
+}
+
+###
+DELETE  http://localhost:3000/api/orders/2
