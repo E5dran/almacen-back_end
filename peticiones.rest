@@ -1,5 +1,41 @@
 ###
-GET http://localhost:3000/api/user
+GET http://localhost:3000/api/users
+
+
+###
+POST http://localhost:3000/api/users
+Content-Type: application/json
+
+{
+    "name": "Test1",
+    "surname": "Test2",
+    "email": "test1@mail.com",
+    "password": "1234",
+    "phone": "987654321",
+    "adress": "Fake st. 1234",
+    "dni": "88888886Y",
+    "gender": "other",
+    "category": "encargado"
+}
+
+###
+PUT http://localhost:3000/api/users/4
+Content-Type: application/json
+
+{
+    "name": "peticion PUT",
+    "surname": "peticion PUT",
+    "email": "test2@mail.com",
+    "password": "12345",
+    "phone": "987654322",
+    "adress": "Fake st. 12345",
+    "dni": "88888889Y",
+    "gender": "other",
+    "category": "operario"
+}
+
+###
+DELETE  http://localhost:3000/api/users/4
 
 ###
 GET http://localhost:3000/api/orders
@@ -9,7 +45,7 @@ POST http://localhost:3000/api/orders
 Content-Type: application/json
 
 {
-    "addressee": "Mero",
+    "addressee": "Pere",
     "description":"C/ Yordi 18",
     "n_items": 5,
     "destination_address": "26",
@@ -20,17 +56,17 @@ Content-Type: application/json
 }
 
 ###
-PUT http://localhost:3000/api/orders/2
+PUT http://localhost:3000/api/orders/1
 Content-Type: application/json
 
 {
-    "addressee": "Juanan",
+    "addressee": "admin",
     "description":"C/ Yordi 18",
     "n_items": 5,
     "destination_address": "26",
     "departure_date": "1996-09-18",
     "arrival_date": "1996-09-18",
-    "truck_plate":"00000011Y",
+    "truck_plate":"7894PLQ",
     "category": "s"
 }
 
