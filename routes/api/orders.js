@@ -1,4 +1,4 @@
-const { getAll, create, update, deleteById, getById } = require('../../models/order.model');
+const { getAll, create, update, deleteById, getById, getByWarehouseId, getByWarehouseIdStatus, getByWarehouseIdStatusCat } = require('../../models/order.model');
 
 const router = require('express').Router();
 
@@ -42,6 +42,35 @@ router.delete('/:ordersId', async (req, res) => {
     }
 });
 
+router.get('/warehouse/:warehouseId', async (req, res) => {
+    const { warehouseId } = req.params;
+    try {
+        const [orders] = await getByWarehouseId(warehouseId);
+        res.json(orders);
+    } catch (error) {
+        res.json({ fatal: error.message });
+    }
+});
+
+router.get('/warehouseId/:warehouseId/status/:status', async (req, res) => {
+    const { warehouseId, status } = req.params;
+    try {
+        const [orders] = await getByWarehouseIdStatus(warehouseId, status);
+        res.json(orders);
+    } catch (error) {
+        res.json({ fatal: error.message });
+    }
+});
+
+router.get('/warehouseId/:warehouseId/status/:status/category/:category', async (req, res) => {
+    const { warehouseId, status, category } = req.params;
+    try {
+        const [orders] = await getByWarehouseIdStatusCat(warehouseId, status, category);
+        res.json(orders);
+    } catch (error) {
+        res.json({ fatal: error.message });
+    }
+});
 
 
 
