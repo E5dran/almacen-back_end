@@ -52,7 +52,7 @@ router.get('/warehouse/:warehouseId', async (req, res) => {
     }
 });
 
-router.get('/warehouseId/:warehouseId/status/:status', async (req, res) => {
+router.get('/warehouse/:warehouseId/status/:status', async (req, res) => {
     const { warehouseId, status } = req.params;
     try {
         const [orders] = await getByWarehouseIdStatus(warehouseId, status);
@@ -62,7 +62,7 @@ router.get('/warehouseId/:warehouseId/status/:status', async (req, res) => {
     }
 });
 
-router.get('/warehouseId/:warehouseId/status/:status/category/:category', async (req, res) => {
+router.get('/warehouse/:warehouseId/status/:status/category/:category', async (req, res) => {
     const { warehouseId, status, category } = req.params;
     try {
         const [orders] = await getByWarehouseIdStatusCat(warehouseId, status, category);
