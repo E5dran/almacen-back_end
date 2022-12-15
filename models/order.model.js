@@ -6,8 +6,8 @@ const getById = (ordersId) => {
     return db.query('select * from orders where id = ?', [ordersId]);
 }
 
-const create = ({ addressee, description, n_items, destination_address, departure_date, arrival_date, truck_plate, category }) => {
-    return db.query('insert into orders (addressee, description, n_items, destination_address,  departure_date, arrival_date, truck_plate,category) values (  ?, ?, ?, ?, ?, ?, ?, ?)', [addressee, description, n_items, destination_address, departure_date, arrival_date, truck_plate, category]);
+const create = ({ addressee, description, n_items, destination_address, departure_date, arrival_date, truck_plate }) => {
+    return db.query('insert into orders (addressee, description, n_items, destination_address,  departure_date, arrival_date, truck_plate) values (  ?, ?, ?, ?, ?, ?, ?)', [addressee, description, n_items, destination_address, departure_date, arrival_date, truck_plate]);
 }
 
 const update = (ordersId, { addressee, description, n_items, destination_address, departure_date, arrival_date, truck_plate, category }) => {
