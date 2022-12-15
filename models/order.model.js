@@ -10,8 +10,8 @@ const create = ({ addressee, description, n_items, destination_address, departur
     return db.query('insert into orders (addressee, description, n_items, destination_address,  departure_date, arrival_date, truck_plate) values (  ?, ?, ?, ?, ?, ?, ?)', [addressee, description, n_items, destination_address, departure_date, arrival_date, truck_plate]);
 }
 
-const update = (ordersId, { addressee, description, n_items, destination_address, departure_date, arrival_date, truck_plate, category }) => {
-    return db.query('update orders set addressee= ?, description= ?, n_items= ?, destination_address= ?,  departure_date= ?, arrival_date= ?, truck_plate= ?, category= ? where id = ?', [addressee, description, n_items, destination_address, departure_date, arrival_date, truck_plate, category, ordersId])
+const update = (ordersId, { addressee, description, n_items, destination_address, departure_date, arrival_date, truck_plate }) => {
+    return db.query('update orders set addressee= ?, description= ?, n_items= ?, destination_address= ?,  departure_date= ?, arrival_date= ?, truck_plate= ? where id = ?', [addressee, description, n_items, destination_address, departure_date, arrival_date, truck_plate, ordersId])
 
 }
 
