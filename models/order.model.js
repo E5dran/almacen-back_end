@@ -1,5 +1,5 @@
 const getAll = () => {
-    return db.query('select * from orders')
+    return db.query('select * from orders');
 }
 
 const getById = (ordersId) => {
@@ -11,8 +11,7 @@ const create = ({ addressee, description, n_items, destination_address, departur
 }
 
 const update = (ordersId, { addressee, description, n_items, destination_address, departure_date, arrival_date, truck_plate }) => {
-    return db.query('update orders set addressee= ?, description= ?, n_items= ?, destination_address= ?,  departure_date= ?, arrival_date= ?, truck_plate= ? where id = ?', [addressee, description, n_items, destination_address, departure_date, arrival_date, truck_plate, ordersId])
-
+    return db.query('update orders set addressee= ?, description= ?, n_items= ?, destination_address= ?,  departure_date= ?, arrival_date= ?, truck_plate= ? where id = ?', [addressee, description, n_items, destination_address, departure_date, arrival_date, truck_plate, ordersId]);
 }
 
 const deleteById = (ordersId) => {
@@ -31,6 +30,10 @@ const getByWarehouseIdStatusCat = (warehouseId, status, cat) => {
     return db.query('select * from orders where warehouse_id = ? && status = ? && category = ?', [warehouseId, status, cat]);
 }
 
+const updateStatus = (ordersId, category) => {
+    return db.query('update orders set category = ? where id = ?', [category, ordersId]);
+}
+
 module.exports = {
-    getAll, create, update, deleteById, getById, getByWarehouseId, getByWarehouseIdStatus, getByWarehouseIdStatusCat
+    getAll, create, update, deleteById, getById, getByWarehouseId, getByWarehouseIdStatus, getByWarehouseIdStatusCat, updateStatus
 }

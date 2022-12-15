@@ -51,12 +51,14 @@ Content-Type: application/json
     "destination_address": "26",
     "departure_date": "1996-09-18",
     "arrival_date": "1996-09-18",
-    "truck_plate":"00000011Y",
-    "category": "s"
+    "truck_plate":"00000011Y"
 }
 
 ###
-PUT http://localhost:3000/api/orders/1
+DELETE  http://localhost:3000/api/orders/2
+
+###
+PUT http://localhost:3000/api/orders/
 Content-Type: application/json
 
 {
@@ -66,12 +68,17 @@ Content-Type: application/json
     "destination_address": "26",
     "departure_date": "1996-09-18",
     "arrival_date": "1996-09-18",
-    "truck_plate":"7894PLQ",
-    "category": "s"
+    "truck_plate":"7894PLQ"
 }
 
+
 ###
-DELETE  http://localhost:3000/api/orders/2
+PUT http://localhost:3000/api/orders/4/category
+Content-Type: application/json
+
+{
+    "category":"a"
+}
 
 ###
 GET http://localhost:3000/api/warehouses
