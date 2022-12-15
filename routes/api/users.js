@@ -1,6 +1,8 @@
-const { getAll, create, update, deleteById } = require('../../models/user.model');
+const { getAll, create, update, deleteById, getByDni } = require('../../models/user.model');
+const { createToken } = require('../../helpers/utils');
 
 const router = require('express').Router();
+const bcrypt = require('bcryptjs');
 
 router.get('/', async (req, res) => {
     try {
@@ -39,6 +41,31 @@ router.delete('/:userId', async (req, res) => {
         res.json(user);
     } catch (error) {
         res.json({ fatal: error.message });
+    }
+});
+
+router.post('/login', async (req, res) => {
+    try {
+        const [result] = await getByDni(req.body.dni);
+
+        if (result.length === 0) {
+            return res.json({ fatal: 'Error usuario y/o contraseña' });
+        }
+
+        const usuario = result[0];
+
+        if (/* bcrypt.compareSync( */req.body.password === usuario.password) {
+            return res.json({
+                success: 'Login correcto',
+                token: createToken(usuario),
+                category: usuario.category,
+                warehouse_id: usuario.warehouse_id
+            });
+        }
+        res.json({ fatal: 'Error usuario y/o contraseña' });
+
+    } catch (error) {
+        res.json({ fatal: error.message })
     }
 });
 
