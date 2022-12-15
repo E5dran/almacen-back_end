@@ -73,6 +73,22 @@ Content-Type: application/json
 
 
 ###
+PUT http://localhost:3000/api/orders/4/departureDate
+Content-Type: application/json
+
+{
+    "departure_date":"1996-09-21"
+}
+
+###
+PUT http://localhost:3000/api/orders/4/arrivalDate
+Content-Type: application/json
+
+{
+    "arrival_date":"1997-09-20"
+}
+
+###
 PUT http://localhost:3000/api/orders/4/category
 Content-Type: application/json
 

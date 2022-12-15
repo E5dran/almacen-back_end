@@ -34,6 +34,14 @@ const updateStatus = (ordersId, category) => {
     return db.query('update orders set category = ? where id = ?', [category, ordersId]);
 }
 
+const updateDepartureDate = (ordersId, date) => {
+    return db.query('update orders set departure_date = ? where id = ?', [date, ordersId]);
+}
+
+const updateArrivalDate = (ordersId, date) => {
+    return db.query('update orders set arrival_date = ? where id = ?', [date, ordersId]);
+}
+
 module.exports = {
-    getAll, create, update, deleteById, getById, getByWarehouseId, getByWarehouseIdStatus, getByWarehouseIdStatusCat, updateStatus
+    getAll, create, update, deleteById, getById, getByWarehouseId, getByWarehouseIdStatus, getByWarehouseIdStatusCat, updateStatus, updateDepartureDate, updateArrivalDate
 }

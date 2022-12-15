@@ -1,4 +1,4 @@
-const { getAll, create, update, deleteById, getById, getByWarehouseId, getByWarehouseIdStatus, getByWarehouseIdStatusCat, updateStatus } = require('../../models/order.model');
+const { getAll, create, update, deleteById, getById, getByWarehouseId, getByWarehouseIdStatus, getByWarehouseIdStatusCat, updateStatus, updateDepartureDate, updateArrivalDate } = require('../../models/order.model');
 
 const router = require('express').Router();
 
@@ -80,5 +80,24 @@ router.put('/:ordersId/category', async (req, res) => {
     }
 });
 
+router.put('/:ordersId/departureDate', async (req, res) => {
+    const { ordersId } = req.params;
+    try {
+        const [orders] = await updateDepartureDate(ordersId, req.body.departure_date);
+        res.json(orders);
+    } catch (error) {
+        res.json({ fatal: error.message });
+    }
+});
+
+router.put('/:ordersId/arrivalDate', async (req, res) => {
+    const { ordersId } = req.params;
+    try {
+        const [orders] = await updateArrivalDate(ordersId, req.body.arrival_date);
+        res.json(orders);
+    } catch (error) {
+        res.json({ fatal: error.message });
+    }
+});
 
 module.exports = router;
