@@ -15,6 +15,7 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
     try {
+        req.body.password = bcrypt.hashSync(req.body.password, 10);
         const [user] = await create(req.body);
         res.json(user)
     } catch (error) {
@@ -54,7 +55,7 @@ router.post('/login', async (req, res) => {
 
         const usuario = result[0];
 
-        if (/* bcrypt.compareSync( */req.body.password === usuario.password) {
+        if (bcrypt.compareSync(req.body.password, usuario.password)) {
             return res.json({
                 success: 'Login correcto',
                 token: createToken(usuario),
