@@ -58,12 +58,7 @@ router.post('/login', async (req, res) => {
         if (bcrypt.compareSync(req.body.password, usuario.password)) {
             return res.json({
                 success: 'Login correcto',
-                token: createToken(usuario),
-                //esta informacion se va a encriptar posteriormente en el TOKEN
-                category: usuario.category,
-                warehouse_id: usuario.warehouse_id,
-                user: usuario.id,
-                username: usuario.name + ' ' + usuario.surname
+                token: createToken(usuario)
             });
         }
         res.json({ fatal: 'Error usuario y/o contraseña' });
