@@ -1,5 +1,4 @@
-const { getAll, create, update, deleteById } = require('../../models/warehouse.model');
-
+const { getAll, create, update, deleteById, getByName, getById } = require('../../models/warehouse.model');
 
 const router = require('express').Router();
 
@@ -37,6 +36,27 @@ router.delete('/:warehouseId', async (req, res) => {
 
     try {
         const [warehouse] = await deleteById(warehouseId);
+        res.json(warehouse);
+    } catch (error) {
+        res.json({ fatal: error.message });
+    }
+});
+
+router.get('/name', async (req, res) => {
+    const { name } = req.body;
+    try {
+        const [warehouse] = await getByName(name);
+        res.json(warehouse);
+    } catch (error) {
+        res.json({ fatal: error.message });
+    }
+});
+
+router.get('/:warehouseId', async (req, res) => {
+    const { warehouseId } = req.params;
+
+    try {
+        const [warehouse] = await getById(warehouseId);
         res.json(warehouse);
     } catch (error) {
         res.json({ fatal: error.message });
