@@ -68,7 +68,7 @@ router.post('/login', async (req, res) => {
     }
 });
 
-router.get('/dni', async (req, res) => {
+router.post('/dni', async (req, res) => {
     const { dni } = req.body;
     try {
         const [warehouse] = await getByDni(dni);
