@@ -42,6 +42,10 @@ const updateArrivalDate = (ordersId, date) => {
     return db.query('update orders set arrival_date = ? where id = ?', [date, ordersId]);
 }
 
+const getByAdressee = (addressee) => {
+    return db.query('select * from orders where addressee = ?', [addressee]);
+}
+
 module.exports = {
-    getAll, create, update, deleteById, getById, getByWarehouseId, getByWarehouseIdStatus, getByWarehouseIdStatusCat, updateStatus, updateDepartureDate, updateArrivalDate
+    getAll, create, update, deleteById, getById, getByWarehouseId, getByWarehouseIdStatus, getByWarehouseIdStatusCat, updateStatus, updateDepartureDate, updateArrivalDate, getByAdressee
 }

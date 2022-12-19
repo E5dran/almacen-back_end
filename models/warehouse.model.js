@@ -18,11 +18,15 @@ const deleteById = (warehouseId) => {
     return db.query('delete from warehouses where id = ?', [warehouseId]);
 }
 
+const getByName = (warehouseName) => {
+    return db.query('select * from warehouses where name = ?', [warehouseName]);
+}
 
 module.exports = {
     getAll,
     getById,
     create,
     update,
-    deleteById
+    deleteById,
+    getByName
 }

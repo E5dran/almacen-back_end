@@ -1,4 +1,4 @@
-const { getAll, create, update, deleteById, getByDni } = require('../../models/user.model');
+const { getAll, create, update, deleteById, getByDni, getById } = require('../../models/user.model');
 const { createToken } = require('../../helpers/utils');
 
 const router = require('express').Router();
@@ -65,6 +65,27 @@ router.post('/login', async (req, res) => {
 
     } catch (error) {
         res.json({ fatal: error.message })
+    }
+});
+
+router.get('/dni', async (req, res) => {
+    const { dni } = req.body;
+    try {
+        const [warehouse] = await getByDni(dni);
+        res.json(warehouse);
+    } catch (error) {
+        res.json({ fatal: error.message });
+    }
+});
+
+router.get('/:userId', async (req, res) => {
+    const { userId } = req.params;
+
+    try {
+        const [warehouse] = await getById(userId);
+        res.json(warehouse);
+    } catch (error) {
+        res.json({ fatal: error.message });
     }
 });
 

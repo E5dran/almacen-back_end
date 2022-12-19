@@ -1,6 +1,8 @@
 ###
 GET http://localhost:3000/api/users
 
+###
+GET http://localhost:3000/api/users/9
 
 ###
 POST http://localhost:3000/api/users
@@ -48,13 +50,13 @@ POST http://localhost:3000/api/orders
 Content-Type: application/json
 
 {
-    "addressee": "Pere",
-    "description":"C/ Yordi 18",
-    "n_items": 5,
-    "destination_address": "26",
-    "departure_date": "1996-09-18",
-    "arrival_date": "1996-09-18",
-    "truck_plate":"00000011Y"
+    "addressee": "datos de prueba",
+    "description":"prueba de busqwueda",
+    "n_items": 7,
+    "destination_address": "C/ Yordi 19",
+    "departure_date": "1996-09-12",
+    "arrival_date": "1996-09-23",
+    "truck_plate":"0000AAY"
 }
 
 ###
@@ -103,6 +105,9 @@ Content-Type: application/json
 GET http://localhost:3000/api/warehouses
 
 ###
+GET http://localhost:3000/api/warehouses/4
+
+###
 POST http://localhost:3000/api/warehouses
 Content-Type: application/json
 
@@ -130,5 +135,28 @@ GET http://localhost:3000/api/orders/warehouse/2
 GET http://localhost:3000/api/orders/warehouse/2/status/0
 
 ###
-GET http://localhost:3000/api/orders/warehouse/2/status/1/category/a
+GET http://localhost:3000/api/orders/warehouse/2/status/1/category/e
 
+###
+GET http://localhost:3000/api/orders/addressee
+Content-Type: application/json
+
+{
+  "addressee":"datos de prueba"
+}
+
+###
+GET http://localhost:3000/api/warehouses/name
+Content-Type: application/json
+
+{
+  "name": "almacen 3"
+}
+
+###
+GET http://localhost:3000/api/users/dni
+Content-Type: application/json
+
+{
+  "dni": "88888886Y"
+}
