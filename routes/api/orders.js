@@ -100,4 +100,14 @@ router.put('/:ordersId/arrivalDate', async (req, res) => {
     }
 });
 
+router.get('/:orderId', async (req, res) => {
+    const { orderId } = req.params;
+    try {
+        const [orders] = await getById(orderId);
+        res.json(orders);
+    } catch (error) {
+        res.json({ fatal: error.message });
+    }
+});
+
 module.exports = router;
