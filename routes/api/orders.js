@@ -70,7 +70,7 @@ router.get('/warehouse/:warehouseId/status/:status/category/:category', async (r
     }
 });
 
-router.get('/addressee', async (req, res) => {
+router.post('/addressee', async (req, res) => {
     const { addressee } = req.body;
     try {
         const [orders] = await getByAdressee(addressee);

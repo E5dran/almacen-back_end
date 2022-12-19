@@ -42,7 +42,7 @@ router.delete('/:warehouseId', async (req, res) => {
     }
 });
 
-router.get('/name', async (req, res) => {
+router.post('/name', async (req, res) => {
     const { name } = req.body;
     try {
         const [warehouse] = await getByName(name);
