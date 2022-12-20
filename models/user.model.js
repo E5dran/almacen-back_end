@@ -10,12 +10,12 @@ const getByDni = (userDni) => {
     return db.query('select * from users where dni = ?', [userDni]);
 }
 
-const create = ({ name, surname, email, password, phone, adress, dni, gender, category }) => {
-    return db.query('insert into users (name, surname, email, password, phone, adress, dni, gender, category) values (  ?, ?, ?, ?, ?, ?, ?, ?, ?)', [name, surname, email, password, phone, adress, dni, gender, category]);
+const create = ({ name, surname, email, password, phone, adress, dni, gender, category, warehouse_id }) => {
+    return db.query('insert into users (name, surname, email, password, phone, adress, dni, gender, category, warehouse_id) values ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [name, surname, email, password, phone, adress, dni, gender, category, warehouse_id]);
 }
 
-const update = (userId, { name, surname, email, password, phone, adress, dni, gender, category }) => {
-    return db.query('update users set name= ?, surname= ?, email= ?, password= ?, phone= ?, adress= ?, dni= ?, gender= ?, category= ? where id = ?', [name, surname, email, password, phone, adress, dni, gender, category, userId]);
+const update = (userId, { name, surname, email, password, phone, adress, dni, gender, category, warehouse_id }) => {
+    return db.query('update users set name= ?, surname= ?, email= ?, password= ?, phone= ?, adress= ?, dni= ?, gender= ?, category= ?, warehouse_id=? where id = ?', [name, surname, email, password, phone, adress, dni, gender, category, warehouse_id, userId]);
 }
 
 const deleteById = (userId) => {

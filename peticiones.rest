@@ -9,31 +9,33 @@ POST http://localhost:3000/api/users
 Content-Type: application/json
 
 {
-    "name": "Test1",
-    "surname": "Test2",
-    "email": "test1@mail.com",
+    "name": "Test5",
+    "surname": "Test5",
+    "email": "test5@mail.com",
     "password": "1234",
-    "phone": "987654321",
-    "adress": "Fake st. 1234",
-    "dni": "88888886Y",
+    "phone": "987654312",
+    "adress": "Fake st. 12345",
+    "dni": "12345678Y",
     "gender": "other",
-    "category": "encargado"
+    "category": "encargado",
+    "warehouse_id":"1"
 }
 
 ###
-PUT http://localhost:3000/api/users/4
+PUT http://localhost:3000/api/users/11
 Content-Type: application/json
 
 {
-    "name": "peticion PUT",
-    "surname": "peticion PUT",
-    "email": "test2@mail.com",
-    "password": "12345",
+    "name": "peticion PUT1",
+    "surname": "peticion PUT1",
+    "email": "testPUT1@mail.com",
+    "password": "1234",
     "phone": "987654322",
     "adress": "Fake st. 12345",
-    "dni": "88888889Y",
+    "dni": "12387645Y",
     "gender": "other",
-    "category": "operario"
+    "category": "operario",
+    "warehouse_id":"4"
 }
 
 ###
