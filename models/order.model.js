@@ -6,8 +6,8 @@ const getById = (ordersId) => {
     return db.query('select * from orders where id = ?', [ordersId]);
 }
 
-const create = ({ addressee, description, n_items, destination_address, departure_date, arrival_date, truck_plate }) => {
-    return db.query('insert into orders (addressee, description, n_items, destination_address,  departure_date, arrival_date, truck_plate) values (  ?, ?, ?, ?, ?, ?, ?)', [addressee, description, n_items, destination_address, departure_date, arrival_date, truck_plate]);
+const create = ({ addressee, description, n_items, destination_address, departure_date, arrival_date, truck_plate, warehouse_id, user_id, destination_wh_id }) => {
+    return db.query('insert into orders (addressee, description, n_items, destination_address,  departure_date, arrival_date, truck_plate, warehouse_id, user_id, destination_wh_id) values (  ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [addressee, description, n_items, destination_address, departure_date, arrival_date, truck_plate, warehouse_id, user_id, destination_wh_id]);
 }
 
 const update = (ordersId, { addressee, description, n_items, destination_address, departure_date, arrival_date, truck_plate }) => {
@@ -42,10 +42,14 @@ const updateArrivalDate = (ordersId, date) => {
     return db.query('update orders set arrival_date = ? where id = ?', [date, ordersId]);
 }
 
+const updateWarehouseId = (ordersId, warehouseId) => {
+    return db.query('update orders set warehouse_id = ? where id = ?', [warehouseId, ordersId]);
+}
+
 const getByAdressee = (addressee) => {
     return db.query('select * from orders where addressee = ?', [addressee]);
 }
 
 module.exports = {
-    getAll, create, update, deleteById, getById, getByWarehouseId, getByWarehouseIdStatus, getByWarehouseIdStatusCat, updateStatus, updateDepartureDate, updateArrivalDate, getByAdressee
+    getAll, create, update, deleteById, getById, getByWarehouseId, getByWarehouseIdStatus, getByWarehouseIdStatusCat, updateStatus, updateDepartureDate, updateArrivalDate, getByAdressee, updateWarehouseId
 }

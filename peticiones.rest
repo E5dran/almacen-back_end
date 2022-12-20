@@ -102,6 +102,15 @@ Content-Type: application/json
 }
 
 ###
+PUT http://localhost:3000/api/orders/15/warehouseId
+Content-Type: application/json
+
+{
+    "warehouse_id":"7"
+}
+
+
+###
 GET http://localhost:3000/api/warehouses
 
 ###
