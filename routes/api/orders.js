@@ -1,4 +1,4 @@
-const { getAll, create, update, deleteById, getById, getByWarehouseId, getByWarehouseIdStatus, getByWarehouseIdStatusCat, updateStatus, updateDepartureDate, updateArrivalDate, getByAdressee, updateWarehouseId, getByUserId } = require('../../models/order.model');
+const { getAll, create, update, deleteById, getById, getByWarehouseId, getByWarehouseIdStatus, getByWarehouseIdStatusCat, updateStatus, updateDepartureDate, updateArrivalDate, getByAdressee, updateWarehouseId, getByUserId, updateCategory } = require('../../models/order.model');
 
 const router = require('express').Router();
 
@@ -90,10 +90,20 @@ router.post('/addressee', async (req, res) => {
     }
 });
 
+router.put('/:ordersId/status', async (req, res) => {
+    const { ordersId } = req.params;
+    try {
+        const [orders] = await updateStatus(ordersId, req.body.status);
+        res.json(orders);
+    } catch (error) {
+        res.json({ fatal: error.message });
+    }
+});
+
 router.put('/:ordersId/category', async (req, res) => {
     const { ordersId } = req.params;
     try {
-        const [orders] = await updateStatus(ordersId, req.body.category);
+        const [orders] = await updateCategory(ordersId, req.body.category);
         res.json(orders);
     } catch (error) {
         res.json({ fatal: error.message });

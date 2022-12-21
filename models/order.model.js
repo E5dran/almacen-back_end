@@ -30,8 +30,12 @@ const getByWarehouseIdStatusCat = (warehouseId, status, cat) => {
     return db.query('select * from orders where warehouse_id = ? && status = ? && category = ?', [warehouseId, status, cat]);
 }
 
-const updateStatus = (ordersId, category) => {
+const updateCategory = (ordersId, category) => {
     return db.query('update orders set category = ? where id = ?', [category, ordersId]);
+}
+
+const updateStatus = (ordersId, status) => {
+    return db.query('update orders set status = ? where id = ?', [status, ordersId]);
 }
 
 const updateDepartureDate = (ordersId, date) => {
@@ -55,5 +59,5 @@ const getByUserId = (userId) => {
 }
 
 module.exports = {
-    getAll, create, update, deleteById, getById, getByWarehouseId, getByWarehouseIdStatus, getByWarehouseIdStatusCat, updateStatus, updateDepartureDate, updateArrivalDate, getByAdressee, updateWarehouseId, getByUserId
+    getAll, create, update, deleteById, getById, getByWarehouseId, getByWarehouseIdStatus, getByWarehouseIdStatusCat, updateStatus, updateDepartureDate, updateArrivalDate, getByAdressee, updateWarehouseId, getByUserId, updateCategory
 }
