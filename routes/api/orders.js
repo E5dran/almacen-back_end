@@ -81,9 +81,9 @@ router.get('/user/:userId', async (req, res) => {
 });
 
 router.post('/addressee', async (req, res) => {
-    const { addressee } = req.body;
+    const { addressee, user_id } = req.body;
     try {
-        const [orders] = await getByAdressee(addressee);
+        const [orders] = await getByAdressee(addressee, user_id);
         res.json(orders);
     } catch (error) {
         res.json({ fatal: error.message });

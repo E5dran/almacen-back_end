@@ -160,11 +160,12 @@ GET http://localhost:3000/api/orders/warehouse/2/status/0
 GET http://localhost:3000/api/orders/warehouse/2/status/1/category/e
 
 ###
-GET http://localhost:3000/api/orders/addressee
+POST  http://localhost:3000/api/orders/addressee
 Content-Type: application/json
 
 {
-  "addressee":"datos de prueba"
+  "addressee":"Pe",
+  "user_id":"2"
 }
 
 ###

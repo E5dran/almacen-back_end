@@ -50,8 +50,8 @@ const updateWarehouseId = (ordersId, warehouseId) => {
     return db.query('update orders set warehouse_id = ? where id = ?', [warehouseId, ordersId]);
 }
 
-const getByAdressee = (addressee) => {
-    return db.query('SELECT * FROM orders WHERE UPPER(addressee) LIKE UPPER(?)', ['%' + addressee + '%']);
+const getByAdressee = (addressee, userId) => {
+    return db.query('SELECT * FROM orders WHERE UPPER(addressee) LIKE UPPER(?) && user_id = ?', ['%' + addressee + '%', userId]);
 }
 
 const getByUserId = (userId) => {
