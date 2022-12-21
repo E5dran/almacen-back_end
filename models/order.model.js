@@ -50,6 +50,10 @@ const getByAdressee = (addressee) => {
     return db.query('select * from orders where addressee = ?', [addressee]);
 }
 
+const getByUserId = (userId) => {
+    return db.query('select * from orders where user_id = ?', [userId]);
+}
+
 module.exports = {
-    getAll, create, update, deleteById, getById, getByWarehouseId, getByWarehouseIdStatus, getByWarehouseIdStatusCat, updateStatus, updateDepartureDate, updateArrivalDate, getByAdressee, updateWarehouseId
+    getAll, create, update, deleteById, getById, getByWarehouseId, getByWarehouseIdStatus, getByWarehouseIdStatusCat, updateStatus, updateDepartureDate, updateArrivalDate, getByAdressee, updateWarehouseId, getByUserId
 }

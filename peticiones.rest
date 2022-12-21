@@ -48,6 +48,9 @@ GET http://localhost:3000/api/orders
 GET http://localhost:3000/api/orders/4
 
 ###
+GET http://localhost:3000/api/orders/user/10
+
+###
 POST http://localhost:3000/api/orders
 Content-Type: application/json
 
