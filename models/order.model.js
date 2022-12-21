@@ -50,6 +50,10 @@ const getByAdressee = (addressee) => {
     return db.query('SELECT * FROM orders WHERE UPPER(addressee) LIKE UPPER(?)', ['%' + addressee + '%']);
 }
 
+const getByUserId = (userId) => {
+    return db.query('select * from orders where user_id = ?', [userId]);
+}
+
 module.exports = {
-    getAll, create, update, deleteById, getById, getByWarehouseId, getByWarehouseIdStatus, getByWarehouseIdStatusCat, updateStatus, updateDepartureDate, updateArrivalDate, getByAdressee, updateWarehouseId
+    getAll, create, update, deleteById, getById, getByWarehouseId, getByWarehouseIdStatus, getByWarehouseIdStatusCat, updateStatus, updateDepartureDate, updateArrivalDate, getByAdressee, updateWarehouseId, getByUserId
 }
