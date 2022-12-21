@@ -7,7 +7,8 @@ const getById = (userId) => {
 }
 
 const getByDni = (userDni) => {
-    return db.query('select * from users where dni = ?', [userDni]);
+    return db.query('SELECT * FROM users WHERE UPPER(dni) LIKE UPPER(?)', ['%' + userDni + '%']);
+
 }
 
 const create = ({ name, surname, email, password, phone, adress, dni, gender, category, warehouse_id }) => {

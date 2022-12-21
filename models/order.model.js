@@ -47,7 +47,7 @@ const updateWarehouseId = (ordersId, warehouseId) => {
 }
 
 const getByAdressee = (addressee) => {
-    return db.query('select * from orders where addressee = ?', [addressee]);
+    return db.query('SELECT * FROM orders WHERE UPPER(addressee) LIKE UPPER(?)', ['%' + addressee + '%']);
 }
 
 module.exports = {
