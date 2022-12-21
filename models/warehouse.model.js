@@ -19,7 +19,8 @@ const deleteById = (warehouseId) => {
 }
 
 const getByName = (warehouseName) => {
-    return db.query('select * from warehouses where name = ?', [warehouseName]);
+    return db.query('SELECT * FROM warehouses WHERE UPPER(name) LIKE UPPER(?)', ['%' + warehouseName + '%']);
+
 }
 
 module.exports = {
